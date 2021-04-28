@@ -1,5 +1,26 @@
-<p>user-detail works!</p>
+<mat-card *ngIf="user$ | async as user ">
+  <mat-card-header>
+    <div mat-card-avatar [style.background-image]="'url(' + picture + ')'" class="header-image"></div>
+    <mat-card-title> {{user.name}}</mat-card-title>
+    <mat-card-subtitle> {{user.username}}</mat-card-subtitle>
+  </mat-card-header>
 
-user: {{id$ | async}}
+  <mat-card-content>
+    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est voluptates eum perspiciatis voluptate at dolore
+      molestiae ullam commodi? Tempore, illum beatae vel veniam ipsa ullam ab. Velit fugit quia magnam.</div>
+    <div class="contact">
+      <div>
+        <mat-icon>home</mat-icon>
+        {{user.address?.street}}
+        {{user.address?.suite}}
+        {{user.address?.city}}
+      </div>
+      <div>
+        <mat-icon>public</mat-icon>
+        {{user.website}}
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
 
-<button (click)="goToHome()">Go To home</button>
+<!-- <button (click)="goToHome()">Go To home</button> -->

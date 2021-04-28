@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -7,15 +9,18 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  users: User[] = [
-    { id: 0, name: 'Jan' },
-    { id: 1, name: 'Klaas' },
-    { id: 2, name: 'Sophie' }
-  ];
+  // users: User[] = [
+  //   { id: 0, name: 'Jan' },
+  //   { id: 1, name: 'Klaas' },
+  //   { id: 2, name: 'Sophie' }
+  // ];
 
-  constructor() { }
+  users$?: Observable<User[]>;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.users$ = this.userService.getUsersRemote();
   }
 
 }

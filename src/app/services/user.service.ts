@@ -19,7 +19,28 @@ export class UserService {
     ];
   }
 
-  getUSersRemote(): Observable<User[]> {
+  getUsersRemote(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/users`);
   }
+
+  getUserRemote(id: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/users/${id}`);
+  }
+
+  getPictures(): string[] {
+    return [
+      'https://randomuser.me/api/portraits/thumb/women/70.jpg',
+      'https://randomuser.me/api/portraits/thumb/men/76.jpg',
+      'https://randomuser.me/api/portraits/thumb/women/95.jpg',
+      'https://randomuser.me/api/portraits/thumb/women/32.jpg',
+      'https://randomuser.me/api/portraits/thumb/women/90.jpg',
+      'https://randomuser.me/api/portraits/thumb/women/72.jpg',
+      'https://randomuser.me/api/portraits/thumb/men/66.jpg',
+      'https://randomuser.me/api/portraits/thumb/men/91.jpg',
+      'https://randomuser.me/api/portraits/thumb/women/25.jpg',
+      'https://randomuser.me/api/portraits/thumb/women/55.jpg',
+      'https://randomuser.me/api/portraits/thumb/men/48.jpg',
+    ];
+  }
+
 }

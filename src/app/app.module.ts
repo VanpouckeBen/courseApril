@@ -54,6 +54,9 @@ import { HttpClientModule } from '@angular/common/http';
     NoopAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule,
     FormsModule
   ],
   providers: [],

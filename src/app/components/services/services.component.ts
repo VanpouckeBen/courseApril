@@ -19,6 +19,6 @@ export class ServicesComponent implements OnInit {
     const users = this.userService.getUsers();
     this.logging.information(`users: ${JSON.stringify(users)}`);
 
-    this.users$ = this.userService.getUSersRemote();
+    this.users$ = this.userService.getUsersRemote();
   }
 }

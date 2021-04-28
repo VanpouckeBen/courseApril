@@ -1,7 +1,18 @@
-<ul>
-  <li *ngFor="let user of users">
+<!-- <ul>
+  <li *ngFor="let user of users$ | async">
     <a [routerLink]="['./',user.id]"> {{user.name}}</a>
   </li>
-</ul>
+</ul> -->
 
-<router-outlet></router-outlet>
+<div class="container">
+  <mat-list>
+    <a *ngFor="let user of users$ | async" [routerLink]="['/user', user.id]">
+      <mat-list-item>{{user.name}}</mat-list-item>
+      <mat-divider></mat-divider>
+    </a>
+  </mat-list>
+  <div class="user-detail">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
