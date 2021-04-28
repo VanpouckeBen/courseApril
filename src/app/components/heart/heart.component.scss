@@ -1,0 +1,12 @@
+.heart{
+  cursor: pointer;
+  color:gray;
+
+  &--liked{
+    color:red;
+  }
+}
+
+// .heart--liked{
+//   color:red;
+// }

@@ -1,0 +1,50 @@
+<h1>Structural directives</h1>
+
+<h3>*ngIf</h3>
+
+<div *ngIf="isVisible">
+  Show this content when isVisible is true
+</div>
+
+<div *ngIf="!isVisible">
+  Show this content when isVisible is false
+</div>
+
+<button  mat-raised-button color="primary"  (click)="toggleIsVisbile()">Toggle is Visible</button>
+
+<hr>
+<div *ngIf="isVisible; else notVisible">
+    Show this content when isVisible is true
+</div>
+
+<ng-template #notVisible>
+    Show this content when isVisible is false
+</ng-template>
+
+<hr>
+
+<div [ngSwitch]="fruit">
+  <div *ngSwitchCase="'apple'">this is an apple</div>
+  <div *ngSwitchCase="'banana'">this is an banana</div>
+  <div *ngSwitchCase="'orange'">this is an orange</div>
+  <div *ngSwitchDefault>this is the default value</div>
+</div>
+
+<hr>
+
+<h3>*ngFor</h3>
+<ul>
+  <!-- <li *ngFor="let user of users; first as first">{{first}} - {{user.name}}</li> -->
+  <li *ngFor="let user of users; let i = index">{{i}} - {{user.name}}</li>
+
+</ul>
+
+<h3>*ngFor: trackBy</h3>
+<ul>
+  <li *ngFor="let user of users; trackBy:trackByItems"> {{user.name}}</li>
+
+</ul>
+
+<div>
+  <button mat-raised-button color="primary" (click)="getPersons()">getPersons</button>
+</div>

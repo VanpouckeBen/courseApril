@@ -1,0 +1,25 @@
+<p>Attribute directives</p>
+
+<h2>*ngStyle</h2>
+<div [ngStyle]="{'font-size':'2rem','color':'red'}">ngStyle</div>
+
+<h2>*ngClass</h2>
+<div [ngClass]="isUShow ? 'show test':''">ngClass</div>
+<div [ngClass]="currentClasses">currentClass</div>
+
+
+<button (click)="toggle()">toggle</button>
+
+<h2>*ngModel</h2>
+
+<div>
+  <input [(ngModel)]="users[0].name" >
+
+  {{users[0].name}}
+</div>
+
+<div>
+  <input [ngModel]="users[1].name" (ngModelChange)="logUpdateName($event)">
+
+  {{users[1].name}}
+</div>
