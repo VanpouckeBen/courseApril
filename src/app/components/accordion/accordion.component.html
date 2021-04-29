@@ -1,0 +1,12 @@
+<div class="accordion">
+  <div class="acccordion__title" (click)="toggle()">
+    {{title}}
+    <mat-icon>
+      <ng-container *ngIf="!isExpanded; else isNotExpanded">expand_more</ng-container>
+      <ng-template #isNotExpanded>expand_less</ng-template>
+    </mat-icon>
+  </div>
+  <div *ngIf="isExpanded" class="accordion__content">
+    <ng-content></ng-content>
+  </div>
+</div>

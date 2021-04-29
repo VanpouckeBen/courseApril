@@ -10,7 +10,15 @@
       <mat-list-item>{{user.name}}</mat-list-item>
       <mat-divider></mat-divider>
     </a>
+
+    <a  [routerLink]="['/user', 'test']">
+      <mat-list-item>test user</mat-list-item>
+      <mat-divider></mat-divider>
+    </a>
   </mat-list>
+
+
+
   <div class="user-detail">
     <router-outlet></router-outlet>
   </div>

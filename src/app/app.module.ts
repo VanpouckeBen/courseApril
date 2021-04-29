@@ -21,12 +21,12 @@ import { AdultDirective } from './directives/adult.directive';
 import { AgeRestrictionComponent } from './components/age-restriction/age-restriction.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { SummaryPipe } from './pipes/summary.pipe';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServicesComponent } from './components/services/services.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -41,11 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     AgeRestrictionComponent,
     PipeComponent,
     SummaryPipe,
-    UserListComponent,
-    UserDetailComponent,
     HomePageComponent,
     NotFoundComponent,
-    ServicesComponent
+    ServicesComponent,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatDividerModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

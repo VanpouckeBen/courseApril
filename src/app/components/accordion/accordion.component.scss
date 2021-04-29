@@ -1,0 +1,23 @@
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 50%;
+  margin:2rem 20rem;
+  &__title {
+    padding: 20px;
+    font-weight: bold;
+
+    &:hover {
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    padding: 20px;
+  }
+}
+
+mat-icon {
+  float:right;
+}
