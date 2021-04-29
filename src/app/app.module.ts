@@ -27,6 +27,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { CoreModule } from './core/core.module';
+import { RxjsComponent } from './components/rxjs/rxjs.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CoreModule } from './core/core.module';
     HomePageComponent,
     NotFoundComponent,
     ServicesComponent,
-    AccordionComponent
+    AccordionComponent,
+    RxjsComponent
   ],
   imports: [
     BrowserModule,
