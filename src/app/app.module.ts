@@ -13,7 +13,7 @@ import { MatListModule} from '@angular/material/list';
 
 import { HeartComponent } from './components/heart/heart.component';
 import { AttributeDirectivesComponent } from './components/attribute-directives/attribute-directives.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 import { CustomDirectivesComponent } from './components/custom-directives/custom-directives.component';
 import { HighlightDirective } from './directives/highlight.directive';
@@ -59,7 +59,8 @@ import { RxjsComponent } from './components/rxjs/rxjs.component';
     MatDividerModule,
     MatListModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

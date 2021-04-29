@@ -1,15 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { EMPTY, forkJoin, from, interval, of, range, throwError } from 'rxjs';
-import { catchError, concatMap, delay, finalize, map, mergeMap, retry, retryWhen, switchMap, tap, timeout } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { EMPTY, forkJoin, from, fromEvent, interval, Observable, of, range, Subscription, throwError } from 'rxjs';
+import { catchError, concatMap, debounceTime, delay, distinctUntilChanged, filter, finalize, map, mergeMap, retry, retryWhen, switchMap, take, takeUntil, tap, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
   templateUrl: './rxjs.component.html',
   styleUrls: ['./rxjs.component.scss']
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
+  test?: Subscription;
+  constructor(private fb: FormBuilder) {
+    const search = this.form.get('movieSearch');
 
-  constructor() { }
+    const data = search?.valueChanges.pipe(
+      filter(x => x.length > 3),
+      debounceTime(400),
+      // distinctUntilChanged(),
+      concatMap(searchTerm => {
+        console.log(searchTerm);
+        return of([1, 2, 3]);
+      })
+    );
+
+    data?.subscribe(x => console.log(x));
+
+  }
+
+  form = this.fb.group({
+    movieSearch: ['']
+  });
+
+  ngOnDestroy(): void {
+    this.test?.unsubscribe();
+  }
 
   ngOnInit(): void {
     // this.createObservables();
@@ -17,7 +41,23 @@ export class RxjsComponent implements OnInit {
     // this.getUserWithTweets();
     // this.errorHandelingDemo();
     // this.retryingDemo();
-    this.timeOutDemo();
+    // this.timeOutDemo();
+
+    // this.test = interval(1000).subscribe(data => {
+    //   // do something with data
+    //   console.log('get next value: ', data);
+    // });
+
+    // // interval(1000).pipe(take(10)).subscribe(data => {
+    // //   // do something with data
+    // //   console.log('get next value: ', data);
+    // // });
+
+    // const clicks = fromEvent(document, 'click');
+    // interval(1000).pipe(takeUntil(clicks)).subscribe(data => {
+    //   // do something with data
+    //   console.log('get next value: ', data);
+    // });
   }
 
   createObservables(): void {
@@ -71,6 +111,8 @@ export class RxjsComponent implements OnInit {
       );
 
       startDates.push(date);
+      // tip from Kevin (dive into immutable arrays and objects)
+      // https://ultimatecourses.com/blog/all-about-immutable-arrays-and-objects-in-javascript
     }
 
     const data = from(startDates).pipe(switchMap(day => {

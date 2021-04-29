@@ -6,7 +6,7 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-user-detail',
+  selector: 'user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
@@ -26,15 +26,18 @@ export class UserDetailComponent implements OnInit {
     //   map((params: ParamMap) => params.get('id'))
     // );
 
-    this.user$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        const id = Number(params.get('id'));
-        this.picture = this.userService.getPictures()[id - 1];
-        return this.userService.getUserRemote(id);
-      }
-      ));
+    // this.user$ = this.route.paramMap.pipe(
+    //   switchMap((params: ParamMap) => {
+    //     const id = Number(params.get('id'));
+    //     this.picture = this.userService.getPictures()[id - 1];
+    //     return this.userService.getUserRemote(id);
+    //   }
+    //   ));
 
-
+    this.user$ = this.route.data.pipe(map(x => {
+      this.picture = this.userService.getPictures()[x.user.id - 1];
+      return x.user;
+    }));
   }
 
   goToHome(): void {
